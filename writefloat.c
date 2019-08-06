@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:48:11 by boris             #+#    #+#             */
-/*   Updated: 2019/08/06 20:57:49 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/06 21:03:11 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	normrezerv(long_value **x, int step)
 char *dobltoa()
 {
 	if (d.i == 9218868437227405312 || d.i == 18442240474082181120)
-		return ("inf");
+		return (d.i == 9218868437227405312 ? "inf" : "-inf");
 	else if (dexp() == 2047)
 		return ("nan");
 }
