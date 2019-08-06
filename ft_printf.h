@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/06 18:17:12 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/06 20:57:57 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void		simplecom(long_value *a, long_value *b);
 void		normalize(long_value *x);
 long_value	*binpow(int n, int base);
 void		sum(long_value *a, long_value *b);
-int			*whole(int n);
-int *fraction(int ot, int step);
+long_value		*whole(int n);
+long_value *fraction(int ot, int step);
 void	normrezerv(long_value **x, int step);
 
 #endif

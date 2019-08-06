@@ -6,13 +6,13 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:48:11 by boris             #+#    #+#             */
-/*   Updated: 2019/08/06 19:02:09 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/06 20:57:49 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	*whole(int n)
+long_value	*whole(int n)
 {
 	long_value *rez;
 	long_value *rezerv;
@@ -31,19 +31,13 @@ int	*whole(int n)
 				free(rezerv);
 			}
 	}
-	ret = malloc(sizeof(int) * rez->size);
-	//поменять на ft_memcpy
-	memcpy(ret, rez->value, sizeof(int) * rez->size);
-	free(rez->value);
-	free(rez);
-	return(ret);
+	return(rez);
 }
 
-int *fraction(int ot, int step)
+long_value *fraction(int ot, int step)
 {
 	long_value *rez;
 	int j;
-	int *ret;
 
 	j = 52 - ot;
 	rez = malloc(sizeof(*rez));
@@ -58,13 +52,7 @@ int *fraction(int ot, int step)
 			normrezerv(&rez, step);
 		step++;
 	}
-	ret = malloc(sizeof(int) * (rez->size + 1));
-	//поменять на ft_memcpy
-	memcpy(ret, rez->value, sizeof(int) * rez->size);
-	ret[rez->size] = -1;
-	free(rez->value);
-	free(rez);
-	return(ret);
+	return(rez);
 }
 
 void	normrezerv(long_value **x, int step)
@@ -90,4 +78,12 @@ void	normrezerv(long_value **x, int step)
 	(*x)->size = step;
 	free(rezerv->value);
 	free(rezerv);
+}
+
+char *dobltoa()
+{
+	if (d.i == 9218868437227405312 || d.i == 18442240474082181120)
+		return ("inf");
+	else if (dexp() == 2047)
+		return ("nan");
 }

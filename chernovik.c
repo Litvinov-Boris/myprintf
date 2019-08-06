@@ -4,13 +4,7 @@
 
 int main(void)
 {
-	d.d = 0.5078125;
-	int *a = fraction(0, -(dexp()));
-	printf("%i\n\n", dexp());
-	while (*a != -1)
-	{
-		printf("%i\n", *a);
-		a++;
-	}
+	d.i = 9223372036854775808;
+	printf(",kf ,kf ,kf %lf ,kf ,kf", d.d);
 	return(0);
 }
