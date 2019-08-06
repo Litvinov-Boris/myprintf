@@ -1,29 +1,13 @@
-/*//возведение в степень
-int binpow (int a, int n) {
-	int res = 1;
-	while (n) {
-		if (n & 1)
-			res *= a;
-		a *= a;
-		n >>= 1;
-	}
-	return res;
-}*/
-
 #include <stdio.h>
 #include <stdint.h>
 #include "ft_printf.h"
-/*union vlint
-{
-	unsigned int i;
-	float d;
-}v;*/
+
 int main(void)
 {
-	d.d = 2458;
-	int *a = whole(dexp());
+	d.d = 0.5078125;
+	int *a = fraction(0, -(dexp()));
 	printf("%i\n\n", dexp());
-	while (*a)
+	while (*a != -1)
 	{
 		printf("%i\n", *a);
 		a++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/06 16:03:17 by boris            ###   ########.fr       */
+/*   Updated: 2019/08/06 18:17:12 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,12 @@ typedef struct  karatsuba
 
 int			ft_printf(const char *format, ...);
 int			dexp();
-void	simplecom(long_value *a, long_value *b);
+void		simplecom(long_value *a, long_value *b);
 void		normalize(long_value *x);
-long_value *binpow(int n, int base);
-void	sum(long_value *a, long_value *b);
-int *whole(int n);
-/*void		stic(long_value *a, long_value *b);
-void		initkaratsuba(karatsuba **term, long_value *a, long_value *b);
-void		freelongvalue(long_value **term);
-void		freeterms(long_value **term1, long_value **term2, long_value **term3);
-void		freekaratsuba(karatsuba **term);
-long_value  *karatsubacom(long_value *a, long_value *b);*/
+long_value	*binpow(int n, int base);
+void		sum(long_value *a, long_value *b);
+int			*whole(int n);
+int *fraction(int ot, int step);
+void	normrezerv(long_value **x, int step);
 
 #endif

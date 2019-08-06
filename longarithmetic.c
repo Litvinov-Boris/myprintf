@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   longarithmetic.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 20:24:30 by boris             #+#    #+#             */
-/*   Updated: 2019/08/06 16:38:07 by boris            ###   ########.fr       */
+/*   Updated: 2019/08/06 17:16:03 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void        normalize(long_value *x)
+void		normalize(long_value *x)
 {
 	unsigned long long int i;
 
@@ -29,7 +29,7 @@ void        normalize(long_value *x)
 		x->size--;
 }
 
-void simplecom(long_value *a, long_value *b)
+void		simplecom(long_value *a, long_value *b)
 {
 	int *rez;
 	unsigned long long int i;
@@ -53,7 +53,7 @@ void simplecom(long_value *a, long_value *b)
 	normalize(a);
 }
 
-long_value *binpow(int n, int base)
+long_value	*binpow(int n, int base)
 {
 	long_value *rez;
 	long_value *pow;
@@ -68,6 +68,7 @@ long_value *binpow(int n, int base)
 	pow->size = 1;
 	while (n)
 	{
+		//после поменять на оптимизированный вариант умножения
 		if(n & 1)
 			simplecom(rez, pow);
 		simplecom(pow, pow);
@@ -78,12 +79,13 @@ long_value *binpow(int n, int base)
 	return (rez);
 }
 
-void	sum(long_value *a, long_value *b)
+void		sum(long_value *a, long_value *b)
 {
 	unsigned long long int i;
 	int *s;
 	
 	s = malloc(sizeof(int) * (a->size > b->size ? a->size +1 : b->size + 1));
+	//поменять на ft_memset
 	memset(s, 0, sizeof(int) * (a->size > b->size ? a->size +1 : b->size + 1));
 	i = -1;
 	while(++i < a->size)
