@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   writefloat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:48:11 by boris             #+#    #+#             */
-/*   Updated: 2019/08/06 21:03:11 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/07 18:36:56 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ void	normrezerv(long_value **x, int step)
 	free(rezerv);
 }
 
-char *dobltoa()
+/*char *dobltoa()
 {
 	if (d.i == 9218868437227405312 || d.i == 18442240474082181120)
 		return (d.i == 9218868437227405312 ? "inf" : "-inf");
 	else if (dexp() == 2047)
 		return ("nan");
-}
+}*/
