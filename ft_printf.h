@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/07 21:24:50 by boris            ###   ########.fr       */
+/*   Updated: 2019/08/08 20:49:30 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ union ldoubletoint
 {
 	long double ld;
 	int i[3];
+	unsigned long long int man;
 }ld;
 
 
@@ -56,5 +57,7 @@ long_value		*whole(int n);
 long_value *fraction(int ot, int step);
 void	normrezerv(long_value **x, int step);
 int longdexp();
+long_value  *lwhole(int n);
+long_value  *lfraction(int ot, int step);
 
 #endif

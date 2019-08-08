@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   writefloat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:48:11 by boris             #+#    #+#             */
-/*   Updated: 2019/08/07 18:40:00 by boris            ###   ########.fr       */
+/*   Updated: 2019/08/08 20:49:41 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ long_value	*whole(int n)
 	long_value *rez;
 	long_value *rezerv;
 	int j;
-	int *ret;
 
 	rez = binpow(n, 2);
 	j = 52;

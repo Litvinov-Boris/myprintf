@@ -12,7 +12,8 @@
                 "chernovik.c",
                 "writefloat.c",
                 "longarithmetic.c",
-                "tolsforfloat.c"
+                "tolsforfloat.c",
+                "writelongdouble.c"
             ]
         }
     ]
