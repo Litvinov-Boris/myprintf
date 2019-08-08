@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/06 20:57:57 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/07 21:24:50 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ union doubletoint
 	double d;
 	unsigned long long int i;
 }d;
+
+union ldoubletoint
+{
+	long double ld;
+	int i[3];
+}ld;
+
 
 typedef struct              long_value
 {
@@ -48,5 +55,6 @@ void		sum(long_value *a, long_value *b);
 long_value		*whole(int n);
 long_value *fraction(int ot, int step);
 void	normrezerv(long_value **x, int step);
+int longdexp();
 
 #endif
