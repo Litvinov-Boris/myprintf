@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/09 16:04:50 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/09 23:30:44 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ long_value	*fraction(int ot, int pow);
 
 int         initlwhole(long_value **rez);
 long_value  *lwhole(int n);
+long_value  *lfraction(int ot, int pow);
 
 #endif

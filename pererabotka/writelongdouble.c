@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:51:08 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/09 16:06:03 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/09 23:29:41 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,32 @@
 
 int         initlwhole(long_value **rez)
 {
-    if ((*rez = (long_value*)malloc(sizeof(*rez))) == NULL)
+	if ((*rez = (long_value*)malloc(sizeof(*rez))) == NULL)
 		return (0);
-    if (((*rez)->value = (int*)malloc(sizeof(int))) == NULL)
+	if (((*rez)->value = (int*)malloc(sizeof(int))) == NULL)
 	{
 		free(rez);
 		return (0);
 	}
-    (*rez)->value[0] = 0;
-    (*rez)->size = 1;
-    return (1);
+	(*rez)->value[0] = 0;
+	(*rez)->size = 1;
+	return (1);
 }
 
 long_value  *lwhole(int n)
 {
-    long_value  *rez;
-    long_value  *rezerv;
-    int j;
+	long_value  *rez;
+	long_value  *rezerv;
+	int j;
 
-    if (!initlwhole(&rez))
-        return (0);
-    j = 64;
-    n++;
-    while (--j >= 0 && --n >= 0)
-        if (ld.man >> j & 1)
-        {
-            if (!(rezerv = binpow(n, 2)))
+	if (!initlwhole(&rez))
+		return (0);
+	j = 64;
+	n++;
+	while (--j >= 0 && --n >= 0)
+		if (ld.man >> j & 1)
+		{
+			if (!(rezerv = binpow(n, 2)))
 			{
 				free_long_value(&rez);
 				return (NULL);
@@ -51,6 +51,27 @@ long_value  *lwhole(int n)
 				return (NULL);
 			}
 			free_long_value(&rezerv);
-        }
-    return (rez);
+		}
+	return (rez);
+}
+
+long_value  *lfraction(int ot, int pow)
+{
+	long_value *rez;
+	int j;
+
+	if (!initlwhole(&rez))
+		return (0);
+	j = 64 - ot - 1;
+	while(--j >= 0)
+    {
+        if(ld.man>>j & 1)
+           if (!normrez(&rez, pow))
+			{
+				free_long_value(&rez);
+				return (NULL);
+			}
+        pow++;
+    }
+	return (rez);
 }

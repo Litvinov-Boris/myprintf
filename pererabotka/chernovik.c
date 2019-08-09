@@ -5,7 +5,7 @@
 int main(void)
 {
 	ld.ld = 5134451364.256955;
-	long_value *a = lwhole(longdexp());
+	long_value *a = lfraction(longdexp(), 1);
 	for (int i = 0; i < a->size; i++)
 	{
 		printf("%i ", a->value[i]);
