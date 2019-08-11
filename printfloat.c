@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 23:58:56 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/11 05:32:01 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/11 05:48:40 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ int		formfraction(int prec, long_value *frc)
 				frc->value[i] = -1;
 				frc->value[i + 1] += frc->value[i + 1] % 2;
 			}
-	}
-	if (!normfraction(frc))
+		if (!normfraction(frc))
 		return (0);
+	}
+	else
+		if (!zerotofrc(frc, prec))
+			return(0);
 	return (1);
 }
 
