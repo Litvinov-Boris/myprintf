@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 20:14:40 by boris             #+#    #+#             */
-/*   Updated: 2019/08/11 05:48:44 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/11 06:24:15 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ char	*doubletostr(int prec)
 	}
 	if (!normnumber(&wh, &frc, prec))
 		return(NULL);
-	if (!(str = doubletonumber(wh, frc)))
+	if (!(str = doubletonumber(wh, frc, prec)))
 		return(freenumber(&wh, &frc));
+	free_long_value(&wh);
+	free_long_value(&frc);
 	return(str);
 }
 

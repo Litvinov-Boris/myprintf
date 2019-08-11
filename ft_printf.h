@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/11 05:49:24 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/11 06:31:47 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ long_value	*whole(int n);
 int			normrez(long_value **x, int pow);
 long_value	*fraction(int ot, int pow);
 char		*wholetostr(long_value *wh);
-char		*doubletonumber(long_value *wh, long_value *frc);
+char		*doubletonumber(long_value *wh, long_value *frc, int prec);
 
 int         initlwhole(long_value **rez);
 long_value  *lwhole(int n);
@@ -80,7 +80,7 @@ char		*ldoubletostr(int prec);
 
 int			formfraction(int prec, long_value *frc);
 int			normfraction(long_value *frc);
-int			normwhole(long_value *wh);
+int			normwhole(long_value *wh, int plus);
 char 		*freenumber(long_value **wh, long_value **frc);
 int			normnumber(long_value **wh, long_value **frc, int prec);
 char		*doubletostr(int prec);

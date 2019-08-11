@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 15:48:11 by boris             #+#    #+#             */
-/*   Updated: 2019/08/11 05:32:13 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/11 06:23:09 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ char		*wholetostr(long_value *wh)
 	return (str);
 }
 
-char		*doubletonumber(long_value *wh, long_value *frc)
+char		*doubletonumber(long_value *wh, long_value *frc, int prec)
 {
 	char		*str1;
 	char		*str2;
@@ -124,14 +124,17 @@ char		*doubletonumber(long_value *wh, long_value *frc)
 		return(NULL);
 	}
 	strcat(str1, str2);
-	strcat(str1, ".");
 	free(str2);
-	if(!(str2 = wholetostr(frc)))
+	if (prec != 0)
 	{
-		free(str1);
-		return(NULL);
+		strcat(str1, ".");
+		if(!(str2 = wholetostr(frc)))
+		{
+			free(str1);
+			return(NULL);
+		}
+		strcat(str1, str2);
+		free(str2);
 	}
-	strcat(str1, str2);
-	free(str2);
 	return (str1);
 }

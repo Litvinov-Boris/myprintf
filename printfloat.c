@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 23:58:56 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/11 05:48:40 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/11 06:39:46 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ int		normfraction(long_value *frc)
 	return (1);	
 }
 
-int		normwhole(long_value *wh)
+int		normwhole(long_value *wh, int plus)
 {
 	unsigned long long int	i;
 	int						*rez;
 
-	wh->value[0]++;
+	wh->value[0] += plus;
 	i = -1;
 	while (wh->value[++i] == 10 && i < wh->size - 1)
 	{
@@ -101,15 +101,23 @@ int		normnumber(long_value **wh, long_value **frc, int prec)
 		free_long_value(frc);
 		return(0);
 	}
-	if ((*frc)->value[(*frc)->size - 1] == 10)
+	if ((*frc)->value[(*frc)->size - 1] == 10 || (prec == 0 &&
+		(*frc)->value[(*frc)->size - 1] > 5))
 	{
 		(*frc)->value[(*frc)->size - 1] = 0;
-		if (!normwhole(*wh))
+		if (!normwhole(*wh, 1))
 		{
 			free_long_value(wh);
 			free_long_value(frc);
 			return(0);
 		}
 	}
+	else if ((prec == 0 && (*frc)->value[(*frc)->size - 1] == 5))
+		if (!normwhole(*wh, (*wh)->value[(*wh)->size - 1] % 2))
+		{
+			free_long_value(wh);
+			free_long_value(frc);
+			return(0);
+		}
 	return (1);
 }
