@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 23:58:56 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/11 06:39:46 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/11 09:48:47 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ int		normfraction(long_value *frc)
 
 	i = -1;
 	while (frc->value[++i] == -1);
+	j = i - 1;
+	while (++j < frc->size - 1 && frc->value[j] >=10)
+	{
+		frc->value[j + 1] += frc->value[j] / 10;
+		frc->value[j] = frc->value[j] % 10;
+	}
 	if ((rez= (int*)malloc(sizeof(int) * frc->size - i)) == NULL)
 		return (0);
 	j = -1;

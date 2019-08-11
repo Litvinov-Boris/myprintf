@@ -14,7 +14,8 @@
                 "longarithmetic.c",
                 "tolsforfloat.c",
                 "writelongdouble.c",
-                "printfloat.c"
+                "printfloat.c",
+                "printnumber.c"
             ]
         }
     ]

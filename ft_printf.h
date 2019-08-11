@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/11 06:31:47 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/11 09:12:43 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,9 @@ int			normwhole(long_value *wh, int plus);
 char 		*freenumber(long_value **wh, long_value **frc);
 int			normnumber(long_value **wh, long_value **frc, int prec);
 char		*doubletostr(int prec);
+
+void		preprint(int zn, t_format *inf);
+void		printspase(char c, int i);
+void		printnumber(t_format *inf, char *str, int zn, int zap);
 
 #endif
