@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/09 23:30:44 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/08 20:49:30 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,17 @@ typedef struct  karatsuba
 	long_value  *bs;
 }               karatsuba;
 
+int			ft_printf(const char *format, ...);
 int			dexp();
-int			longdexp();
-void 		free_long_value(long_value **x);
-
-void        normalize(long_value *x);
-int         sum(long_value *a, long_value *b);
-int         simplecom(long_value *a, long_value *b);
-int			initbinpow(long_value **rez, long_value **pow, int base);
-long_value  *binpow(int n, int base);
-
-long_value	*whole(int n);
-int			normrez(long_value **x, int pow);
-long_value	*fraction(int ot, int pow);
-
-int         initlwhole(long_value **rez);
+void		simplecom(long_value *a, long_value *b);
+void		normalize(long_value *x);
+long_value	*binpow(int n, int base);
+void		sum(long_value *a, long_value *b);
+long_value		*whole(int n);
+long_value *fraction(int ot, int step);
+void	normrezerv(long_value **x, int step);
+int longdexp();
 long_value  *lwhole(int n);
-long_value  *lfraction(int ot, int pow);
+long_value  *lfraction(int ot, int step);
 
 #endif

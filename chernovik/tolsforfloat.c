@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tolsforfloat.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 20:14:40 by boris             #+#    #+#             */
-/*   Updated: 2019/08/09 13:10:17 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/07 21:27:31 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,4 @@ int longdexp()
     
     i = (ld.i[2] & 32767) - 16383;
     return (i);
-}
-
-void free_long_value(long_value **x)
-{
-    free((*x)->value);
-    free(*x);
 }

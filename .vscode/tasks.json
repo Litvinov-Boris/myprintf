@@ -13,7 +13,8 @@
                 "writefloat.c",
                 "longarithmetic.c",
                 "tolsforfloat.c",
-                "writelongdouble.c"
+                "writelongdouble.c",
+                "printfloat.c"
             ]
         }
     ]
