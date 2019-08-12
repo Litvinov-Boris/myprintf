@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 07:58:43 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/12 15:17:32 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/12 15:55:26 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,11 @@
 
 void    printnumber(t_format *inf, char *str, int zn, int zap)
 {
-	if (inf->width <= strlen(str) + zap)
+	if (inf->width <= strlen(str) + zap || inf->flag >> 2 & 1)
 	{
 		preprint(zn, inf);
 		write(1, str, strlen(str));
-	}
-	else if (inf->flag >> 2 & 1)
-	{
-		preprint(zn, inf);
-		write(1, str, strlen(str));
+		(inf->flag>>4 & 1 && inf->prec == 0) ? write(1, ".", 1): 0;
 		printspase(' ', inf->width - strlen(str) - zap);
 	}
 	else if (inf->flag >> 3 & 1)
@@ -37,6 +33,7 @@ void    printnumber(t_format *inf, char *str, int zn, int zap)
 		preprint(zn, inf);
 		write(1, str, strlen(str));
 	}
+	(inf->flag>>4 & 1 && inf->prec == 0 && (!(inf->flag >> 2 & 1))) ? write(1, ".", 1): 0;
 }
 
 void	preprint(int zn, t_format *inf)
@@ -51,7 +48,7 @@ void	preprint(int zn, t_format *inf)
 
 void	printspase(char c, int i)
 {
-	while (i)
+	while (i > 0)
 	{
 		write(1, &c, 1);
 		i--;

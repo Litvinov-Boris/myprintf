@@ -12,7 +12,7 @@ int main(void)
 	a.flag |=0x04;
 	//a.flag |=0x08;
 	a.flag |=0x10;
-	a.prec = 10;
+	a.prec = 0;
 	a.width = 20;
 	char *str = zerostr(a.prec);
 	finalprintnahoild(&a);
