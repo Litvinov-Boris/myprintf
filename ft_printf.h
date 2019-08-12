@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:49:45 by boris             #+#    #+#             */
-/*   Updated: 2019/08/12 14:31:53 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/12 15:18:21 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,8 @@ void		printspase(char c, int i);
 void		printnumber(t_format *inf, char *str, int zn, int zap);
 char		*zerostr(int prec);
 int			finalprintnahoid(t_format *inf);
+
+void    lfiksfinal();
+void    fiksfinal();
 
 #endif

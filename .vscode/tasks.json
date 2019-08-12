@@ -15,7 +15,8 @@
                 "tolsforfloat.c",
                 "writelongdouble.c",
                 "printfloat.c",
-                "printnumber.c"
+                "printnumber.c",
+                "prostonehvataetmesta.c"
             ]
         }
     ]

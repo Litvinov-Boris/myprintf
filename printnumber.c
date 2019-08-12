@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 07:58:43 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/12 14:19:55 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/12 15:17:32 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,14 @@ int		finalprintnahoid(t_format *inf)
 		write(1, "nan", 3);
 	else
 		if (d.i == 0x7FF0000000000000 || d.i == 0xFFF0000000000000)
-			if (d.i == 0x7FF0000000000000)
-				write(1, "inf", 3);
-			else
-				write(1, "-inf", 3);
+			fiksfinal();
 		else if (d.i == 0 || d.i == 0x8000000000000000)
 		{
 			if (!(str = zerostr(inf->prec)))
 				return (0);
 			printnumber(inf, str, (int)(d.d < 0), (int)(d.d <0 ||
 				inf->flag & 1 || inf->flag>>1 & 1));
+			free(str);
 		}
 		else
 		{
@@ -96,6 +94,7 @@ int		finalprintnahoid(t_format *inf)
 				return (0);
 			printnumber(inf, str, (int)(d.d < 0), (int)(d.d <0 ||
 				inf->flag & 1 || inf->flag>>1 & 1));
+			free(str);
 		}
 	return (1);
 }
