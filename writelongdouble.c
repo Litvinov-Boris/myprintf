@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:51:08 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/11 06:23:47 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/12 14:30:45 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,33 @@ char	*ldoubletostr(int prec)
 	free_long_value(&wh);
 	free_long_value(&frc);
 	return(str);
+}
+
+int		finalprintnahoild(t_format *inf)
+{
+	char *str;
+
+	if (ld.ld != ld.ld)
+		write(1, "nan", 3);
+	else
+		if (ld.man == 0 && (ld.i[2] == 32767 || ld.i[2] == 65535))
+			if (ld.i[2] == 32767)
+				write(1, "inf", 3);
+			else
+				write(1, "-inf", 3);
+		else if (ld.man == 0 && (ld.i[2] == 0 || ld.i[2] == 32768)) 
+		{
+			if (!(str = zerostr(inf->prec)))
+				return (0);
+			printnumber(inf, str, (int)(d.d < 0), (int)(d.d <0 ||
+				inf->flag & 1 || inf->flag>>1 & 1));
+		}
+		else
+		{
+			if (!(str = ldoubletostr(inf->prec)))
+				return (0);
+			printnumber(inf, str, (int)(ld.ld < 0), (int)(d.d <0 ||
+				inf->flag & 1 || inf->flag>>1 & 1));
+		}
+	return (1);
 }
