@@ -6,13 +6,13 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 13:34:51 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/11 00:42:24 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/12 16:32:51 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void        normalize(long_value *x)
+void			normalize(t_long_value *x)
 {
 	unsigned long long int i;
 
@@ -29,10 +29,10 @@ void        normalize(long_value *x)
 		x->size--;
 }
 
-int         sum(long_value *a, long_value *b)
+int			sum(t_long_value *a, t_long_value *b)
 {
-	unsigned long long int  i;
-	int                     *s;
+	unsigned long long int	i;
+	int						*s;
 
 	if ((s = (int*)malloc(sizeof(int) * ((a->size > b->size) ? a->size + 1 :
 		b->size + 1))) == NULL)
@@ -51,20 +51,20 @@ int         sum(long_value *a, long_value *b)
 	return (1);
 }
 
-int         simplecom(long_value *a, long_value *b)
+int			simplecom(t_long_value *a, t_long_value *b)
 {
-	int                     *rez;
-	unsigned long long int  i;
-	unsigned long long int  j;
+	int						*rez;
+	unsigned long long int	i;
+	unsigned long long int	j;
 
-	if ((rez= (int*)malloc(sizeof(int) * (a->size + b->size))) == NULL)
+	if ((rez = (int*)malloc(sizeof(int) * (a->size + b->size))) == NULL)
 		return (0);
 	memset(rez, 0, sizeof(*rez) * (a->size + b->size));//поменять на ft_memset
 	i = -1;
 	while (++i < a->size)
 	{
 		j = -1;
-		while(++j < b->size)
+		while (++j < b->size)
 		{
 			rez[i + j] += a->value[i] * b->value[j];
 		}
@@ -76,16 +76,16 @@ int         simplecom(long_value *a, long_value *b)
 	return (1);
 }
 
-int			initbinpow(long_value **rez, long_value **pow, int base)
+int			initbinpow(t_long_value **rez, t_long_value **pow, int base)
 {
-	if ((*rez = (long_value*)malloc(sizeof(**rez))) == NULL)
+	if ((*rez = (t_long_value*)malloc(sizeof(**rez))) == NULL)
 		return (0);
 	if (((*rez)->value = (int*)malloc(sizeof(int))) == NULL)
 	{
 		free(*rez);
 		return (0);
 	}
-	if((*pow = (long_value*)malloc(sizeof(**pow))) == NULL)
+	if ((*pow = (t_long_value*)malloc(sizeof(**pow))) == NULL)
 	{
 		free_long_value(rez);
 		return (0);
@@ -103,10 +103,10 @@ int			initbinpow(long_value **rez, long_value **pow, int base)
 	return (1);
 }
 
-long_value  *binpow(int n, int base)
+t_long_value	*binpow(int n, int base)
 {
-	long_value	*rez;
-	long_value	*pow;
+	t_long_value	*rez;
+	t_long_value	*pow;
 
 	if (!initbinpow(&rez, &pow, base))
 		return (NULL);

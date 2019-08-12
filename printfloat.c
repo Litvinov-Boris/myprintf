@@ -6,13 +6,13 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 23:58:56 by svivienn          #+#    #+#             */
-/*   Updated: 2019/08/11 09:48:47 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/08/12 16:41:58 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		formfraction(int prec, long_value *frc)
+int		formfraction(int prec, t_long_value *frc)
 {
 	unsigned long long int i;
 
@@ -20,7 +20,7 @@ int		formfraction(int prec, long_value *frc)
 	{
 		i = -1;
 		while ((++i + 1) < frc->size && frc->size - i > prec)
-			if(frc->value[i] < 5)
+			if (frc->value[i] < 5)
 				frc->value[i] = -1;
 			else if (frc->value[i] > 5)
 			{
@@ -33,29 +33,29 @@ int		formfraction(int prec, long_value *frc)
 				frc->value[i + 1] += frc->value[i + 1] % 2;
 			}
 		if (!normfraction(frc))
-		return (0);
+			return (0);
 	}
-	else
-		if (!zerotofrc(frc, prec))
-			return(0);
+	else if (!zerotofrc(frc, prec))
+		return (0);
 	return (1);
 }
 
-int		normfraction(long_value *frc)
+int		normfraction(t_long_value *frc)
 {
 	unsigned long long	i;
 	int					*rez;
-	unsigned long long 	j;
+	unsigned long long	j;
 
-	i = -1;
-	while (frc->value[++i] == -1);
+	i = 0;
+	while (frc->value[i] == -1)
+		i++;
 	j = i - 1;
-	while (++j < frc->size - 1 && frc->value[j] >=10)
+	while (++j < frc->size - 1 && frc->value[j] >= 10)
 	{
 		frc->value[j + 1] += frc->value[j] / 10;
 		frc->value[j] = frc->value[j] % 10;
 	}
-	if ((rez= (int*)malloc(sizeof(int) * frc->size - i)) == NULL)
+	if ((rez = (int*)malloc(sizeof(int) * frc->size - i)) == NULL)
 		return (0);
 	j = -1;
 	while (i + (++j) < frc->size)
@@ -63,10 +63,10 @@ int		normfraction(long_value *frc)
 	free(frc->value);
 	frc->value = rez;
 	frc->size = frc->size - i;
-	return (1);	
+	return (1);
 }
 
-int		normwhole(long_value *wh, int plus)
+int		normwhole(t_long_value *wh, int plus)
 {
 	unsigned long long int	i;
 	int						*rez;
@@ -78,9 +78,9 @@ int		normwhole(long_value *wh, int plus)
 		wh->value[i] = 0;
 		wh->value[i + 1]++;
 	}
-	if (wh->value[wh->size -1] == 10)
+	if (wh->value[wh->size - 1] == 10)
 	{
-		if ((rez= (int*)malloc(sizeof(int) * (wh->size + 1))) == NULL)
+		if ((rez = (int*)malloc(sizeof(int) * (wh->size + 1))) == NULL)
 			return (0);
 		memcpy(rez, wh->value, sizeof(int) * wh->size - 1);//поменять на ft
 		rez[wh->size - 1] = 0;
@@ -92,20 +92,20 @@ int		normwhole(long_value *wh, int plus)
 	return (1);
 }
 
-char *freenumber(long_value **wh, long_value **frc)
+char	*freenumber(t_long_value **wh, t_long_value **frc)
 {
 	free_long_value(wh);
 	free_long_value(frc);
-	return(NULL);
+	return (NULL);
 }
 
-int		normnumber(long_value **wh, long_value **frc, int prec)
+int		normnumber(t_long_value **wh, t_long_value **frc, int prec)
 {
 	if (!formfraction(prec, *frc))
 	{
 		free_long_value(wh);
 		free_long_value(frc);
-		return(0);
+		return (0);
 	}
 	if ((*frc)->value[(*frc)->size - 1] == 10 || (prec == 0 &&
 		(*frc)->value[(*frc)->size - 1] > 5))
@@ -115,7 +115,7 @@ int		normnumber(long_value **wh, long_value **frc, int prec)
 		{
 			free_long_value(wh);
 			free_long_value(frc);
-			return(0);
+			return (0);
 		}
 	}
 	else if ((prec == 0 && (*frc)->value[(*frc)->size - 1] == 5))
@@ -123,7 +123,7 @@ int		normnumber(long_value **wh, long_value **frc, int prec)
 		{
 			free_long_value(wh);
 			free_long_value(frc);
-			return(0);
+			return (0);
 		}
 	return (1);
 }
